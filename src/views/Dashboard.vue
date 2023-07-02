@@ -1,3 +1,13 @@
+<script setup lang="ts"></script>
+
 <template>
-  <span>Dashboard</span>
+  <div class="container">
+    <a>aaa</a>
+  </div>
 </template>
+
+<style scoped>
+.container {
+  padding-left: 260px;
+}
+</style>

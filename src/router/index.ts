@@ -7,6 +7,9 @@ const routes = [
   {
     path: '/',
     component: Home,
+    meta: {
+      hideSidebar: true,
+    },
   },
   {
     path: '/dashboard',

@@ -2,6 +2,7 @@
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 
+import logo from '@/assets/h4pay_logo.png';
 import Modal from '@/components/Modal.vue';
 
 const router = useRouter();
@@ -13,10 +14,30 @@ function submitForm() {
 </script>
 
 <template>
-  <main class="container">
+  <main class="main">
     <div class="content">
       <div class="header">
-        <h1>헤더</h1>
+        <div class="logo-container">
+          <img class="logo" :src="logo" />
+          <div class="logo-typography">
+            <div
+              style="
+                font-weight: bold;
+                font-size: 3em;
+                line-height: 1;
+                margin-bottom: 5px;
+              "
+            >
+              H4Pay
+            </div>
+            <div style="font-size: 2em; line-height: 1">매니저</div>
+          </div>
+        </div>
+        <div>
+          <h1 class="typography-h5">공지사항</h1>
+          <hr />
+          <div style="height: 20vh"></div>
+        </div>
       </div>
       <div class="card">
         <div class="signin-header">
@@ -87,16 +108,11 @@ function submitForm() {
 </template>
 
 <style scoped>
-@font-face {
-  font-family: 'Pretendard-Regular';
-  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
-    format('woff');
-  font-weight: 400;
-  font-style: normal;
+hr {
+  border: 1px solid lightgrey;
 }
 
-.container {
-  font-family: 'Pretendard-Regular';
+.main {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,6 +121,23 @@ function submitForm() {
 
 .content {
   display: flex;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.logo {
+  width: 100px;
+}
+
+.logo-typography {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20px;
 }
 
 .signin-header {
@@ -135,10 +168,10 @@ function submitForm() {
 }
 
 .header {
+  display: flex;
+  flex-direction: column;
   width: 500px;
-  background: grey;
-  border: 1px solid #d9d9d9;
-  margin-right: 10px;
+  margin-right: 50px;
 }
 
 .typography-h5 {
