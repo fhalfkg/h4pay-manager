@@ -40,6 +40,8 @@
 }
 
 .body {
+  overflow: scroll;
+  overflow-x: hidden;
   flex: 1 1 auto;
   padding: 1rem;
 }
