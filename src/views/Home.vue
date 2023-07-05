@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
-import { ref } from 'vue';
+import { useRouter } from 'vue-router'
+import { ref } from 'vue'
 
-import logo from '@/assets/h4pay_logo.png';
-import Modal from '@/components/Modal.vue';
+import logo from '@/assets/h4pay_logo.png'
+import Modal from '@/components/Modal.vue'
 
-const router = useRouter();
-const isModalOpened = ref(false);
+const router = useRouter()
+const isModalOpened = ref(false)
 
 function submitForm() {
-  router.push('/dashboard');
+  router.push('/dashboard')
 }
 </script>
 
@@ -131,6 +131,7 @@ hr {
 
 .logo {
   width: 100px;
+	border-radius: var(--logo-border-radius);
 }
 
 .logo-typography {

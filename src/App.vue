@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
+import { useRoute } from 'vue-router'
 
-import Sidebar from '@/components/Sidebar.vue';
+import Sidebar from '@/components/Sidebar.vue'
 
-const route = useRoute();
+const route = useRoute()
 </script>
 
 <template>

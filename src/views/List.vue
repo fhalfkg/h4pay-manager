@@ -2,7 +2,7 @@
 
 <template>
   <div class="container">
-    <a>Dashboard</a>
+    <a>List</a>
   </div>
 </template>
 
