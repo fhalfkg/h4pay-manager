@@ -1,0 +1,27 @@
+[
+	{
+		"name": "메인",
+		"children": [
+			{
+				"name": "대시보드",
+				"path": "/dashboard",
+				"icon": "dashboard"
+			}
+		]
+	},
+	{
+		"name": "관리",
+		"children": [
+			{
+				"name": "공지사항",
+				"path": "/notice",
+				"icon": "notifications"
+			},
+			{
+				"name": "주문",
+				"path": "/order",
+				"icon": "shopping_cart"
+			}
+		]
+	}
+]

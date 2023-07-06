@@ -2,27 +2,27 @@
 </script>
 
 <template>
-	<div class="toast revealed">
+	<div>
 		<slot></slot>
 	</div>
 </template>
 
-<style scoped>
+<style>
 .toast {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    padding: 15px 20px;
-    transform: translate(-50%, 10px);
-    border-radius: 30px;
-    overflow: hidden;
-    font-size: .8rem;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .5s, visibility .5s, transform .5s;
-    background: rgba(0, 0, 0, .35);
-    color: #fff;
-    z-index: 10000;
+	position: fixed;
+	bottom: 30px;
+  left: 50%;
+  padding: 15px 20px;
+  transform: translate(-50%, 10px);
+  border-radius: 30px;
+  overflow: hidden;
+  font-size: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .5s, visibility .5s, transform .5s;
+  background: rgba(0, 0, 0, .35);
+  color: #fff;
+  z-index: 10000;
 }
 	
 .toast.revealed {
