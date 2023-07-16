@@ -42,7 +42,7 @@ const date = ref()
               <th>교환 여부</th>
             </tr>
           </thead>
-          <tbody v-for="(order, index) in orders">
+          <tbody v-for="order in orders">
             <tr class="expandable">
               <td><span class="material-symbols-outlined expand">chevron_right</span></td>
               <td>{{ order.id }}</td>
