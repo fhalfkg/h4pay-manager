@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { ref } from 'vue'
+import { useToast } from 'vue-toastification'
 
 import logo from '@/assets/h4pay_logo.png'
 import Modal from '@/components/Modal.vue'
@@ -10,6 +11,14 @@ const isModalOpened = ref(false)
 
 function submitForm() {
   router.push('/dashboard')
+}
+
+function showLoginDate() {
+	const toast = useToast()
+
+	toast.success(`로그인 시간: ${new Date().toLocaleString()}`, {
+		timeout: 3000
+	})
 }
 </script>
 
@@ -58,15 +67,15 @@ function submitForm() {
             </div>
           </div>
 
-          <div class="buttons">
+          <div class="button-container">
             <button
-              class="signin-button"
+              class="primary-button"
               type="button"
               @click="isModalOpened = true"
             >
               회원가입
             </button>
-            <button class="signin-button" type="submit">로그인</button>
+            <button class="primary-button" style="margin-left: 10px" type="submit" @click="showLoginDate">로그인</button>
           </div>
         </form>
       </div>
@@ -214,27 +223,10 @@ hr {
   font-size: 18px;
 }
 
-.buttons {
+.button-container {
   display: flex;
   justify-content: flex-end;
   width: 100%;
   margin-top: 24px;
-}
-
-.signin-button {
-  margin-left: 10px;
-  width: 70px;
-  height: 40px;
-  border: none;
-  border-radius: 7px;
-  background: slateblue;
-  font-size: 15px;
-  color: white;
-  transition: background 0.2s ease;
-}
-
-.signin-button:hover {
-  background: #4f4399;
-  cursor: pointer;
 }
 </style>

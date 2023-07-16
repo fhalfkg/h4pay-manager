@@ -1,7 +1,11 @@
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+@import 'assets/datepicker.css';
 
 :root {
-	--logo-border-radius: 18px;
+  --logo-border-radius: 18px;
+  
+  --dp-font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  --dp-border-radius: 8px;
 }
 
 *,
@@ -34,4 +38,36 @@ body {
 input,
 button {
   font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
+
+.primary-button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 7px;
+  background: slateblue;
+  font-size: 15px;
+  color: white;
+  transition: background 0.2s ease;
+}
+
+.primary-button:hover {
+  background: #4f4399;
+  cursor: pointer;
+}
+
+.signout-button {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding: 15px 10px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  background-color: #ff4444;
+  transition: background-color .2s ease;
+  cursor: pointer;
+}
+
+.signout-button:hover {
+  background-color: #cc0000;
 }
