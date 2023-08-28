@@ -12,7 +12,7 @@ function showDetails(index: number) {
 
 <template>
   <div class="container">
-    <section class="notice">
+    <section class="section">
       <h1 class="typography">공지사항</h1>
       <p class="typography">공지사항을 관리할 수 있습니다.</p>
       <div style="flex: 0 0 auto; height: 32px"></div>
@@ -51,21 +51,6 @@ function showDetails(index: number) {
 </template>
 
 <style scoped>
-.container {
-  background: white;
-  padding-left: 260px;
-  width: 100%;
-  height: 100vh;
-  margin: auto;
-}
-
-.notice {
-  padding: 40px 0;
-  width: calc(100% - 96px);
-  height: 100%;
-  margin: 0 auto;
-}
-
 .button-container {
   display: flex;
   flex-direction: row;

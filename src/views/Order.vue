@@ -5,13 +5,17 @@ import ordersJson from '@/assets/order.json'
 
 const orders = ref(ordersJson)
 const date = ref()
+
+function showDetails(index: number) {
+  orders.value[index].showDetails = !orders.value[index].showDetails
+}
 </script>
 
 <template>
   <div class="container">
-    <section class="order">
-      <h1 class="typography">주문 내역 조회</h1>
-      <p class="typography">날짜 범위, 전화번호를 조건으로 설정하여 조회할 수 있습니다.</p>
+    <section class="section">
+      <h1 class="typography">주문 내역</h1>
+      <p class="typography">주문 내역을 날짜 범위, 전화번호를 조건으로 설정하여 조회할 수 있습니다.</p>
       <div style="flex: 0 0 auto; height: 32px"></div>
       <div class="condition-container">
         <div class="condition">
@@ -42,15 +46,19 @@ const date = ref()
               <th>교환 여부</th>
             </tr>
           </thead>
-          <tbody v-for="order in orders">
+          <tbody v-for="(order, index) in orders">
             <tr class="expandable">
-              <td><span class="material-symbols-outlined expand">chevron_right</span></td>
+              <td><span class="material-symbols-outlined expand" :class="{ expanded: orders[index].showDetails }"
+                  @click="showDetails(index)">chevron_right</span></td>
               <td>{{ order.id }}</td>
               <td>{{ order.phoneNumber }}</td>
               <td>{{ order.amount }}</td>
               <td>{{ order.orderedDate }}</td>
               <td>{{ order.expiration }}</td>
               <td>{{ order.isExchanged ? "O" : "X" }}</td>
+            </tr>
+            <tr v-if="order.showDetails">
+              <td class="detail" colspan="7">detail</td>
             </tr>
           </tbody>
         </table>
@@ -60,13 +68,6 @@ const date = ref()
 </template>
 
 <style scoped>
-.container {
-  background: white;
-  padding-left: 260px;
-  width: 100%;
-  height: 100vh;
-  margin: auto;
-}
 
 .condition-container {
   display: flex;
@@ -79,13 +80,6 @@ const date = ref()
 
 .condition:last-child {
   margin-right: 0px;
-}
-
-.order {
-  padding: 40px 0;
-  width: calc(100% - 96px);
-  height: 100%;
-  margin: 0 auto;
 }
 
 .label {

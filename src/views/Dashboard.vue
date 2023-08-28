@@ -14,14 +14,6 @@
 </template>
 
 <style scoped>
-.container {
-	background: white;
-	padding-left: 260px;
-	width: 100%;
-	height: 100vh;
-	margin: auto;
-}
-
 .panel .title {
 	color: grey;
 	font-size: 1rem;
