@@ -9,6 +9,12 @@ import Modal from '@/components/Modal.vue'
 const router = useRouter()
 const isModalOpened = ref(false)
 
+const isChrome = window.navigator.userAgent.toLowerCase().indexOf('chrome')
+
+if (isChrome == -1) {
+  alert('본 웹사이트는 Google Chrome에 최적화되어 있습니다.')
+}
+
 function submitForm() {
   router.push('/dashboard')
 }

@@ -24,7 +24,7 @@ const route = useRoute()
   font-weight: normal;
   font-style: normal;
   font-size: 20px;
-  line-height: 1.5;
+  line-height: 1;
   letter-spacing: normal;
   text-transform: none;
   display: inline-block;

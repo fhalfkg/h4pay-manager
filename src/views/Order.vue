@@ -68,7 +68,6 @@ function showDetails(index: number) {
 </template>
 
 <style scoped>
-
 .condition-container {
   display: flex;
 }
