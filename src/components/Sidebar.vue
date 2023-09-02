@@ -2,11 +2,116 @@
 import { useRouter } from 'vue-router'
 
 import logo from '@/assets/h4pay_logo.png'
-import menu from '@/assets/menu.json'
 
 import ListCategory from './ListCategory.vue'
 
 const router = useRouter()
+const menu = [
+  {
+    name: "메인",
+    children: [
+      {
+        name: "대시보드",
+        path: "/dashboard",
+        icon: "dashboard",
+        role: "all",
+        subChildren: []
+      }
+    ]
+  },
+  {
+    name: "관리",
+    children: [
+      {
+        name: "공지사항",
+        path: "/notice",
+        icon: "notifications",
+        role: "all",
+        subChildren: []
+      },
+      {
+        name: "주문",
+        path: "/order",
+        icon: "shopping_cart",
+        role: "all",
+        subChildren: []
+      },
+      {
+        name: "선물",
+        path: "/gift",
+        icon: "redeem",
+        role: "all",
+        subChildren: [
+          {
+            name: "대량 전송 (결제)",
+            path: "/bulk/send-gift-paid",
+            icon: "send",
+            role: "all"
+          },
+          {
+            name: "대량 전송 (무결제)",
+            path: "/bulk/send-gift-unpaid",
+            icon: "cancel_schedule_send",
+            role: "all"
+          },
+          {
+            name: "대량 전송 승인",
+            path: "/bulk/accept-gift-request",
+            icon: "check_circle",
+            role: "all"
+          }
+        ]
+      },
+      {
+        name: "금액권",
+        path: "/voucher",
+        icon: "credit_card",
+        role: "all",
+        subChildren: [
+          {
+            name: "대량 전송 (결제)",
+            path: "/bulk/send-voucher-paid",
+            icon: "send",
+            role: "all"
+          },
+          {
+            name: "대량 전송 (무결제)",
+            path: "/bulk/send-voucher-unpaid",
+            icon: "cancel_schedule_send",
+            role: "all"
+          },
+          {
+            name: "대량 전송 승인",
+            path: "/bulk/accept-voucher-request",
+            icon: "check_circle",
+            role: "all"
+          }
+        ]
+      },
+      {
+        name: "상품",
+        path: "/product",
+        icon: "category",
+        role: "all",
+        subChildren: []
+      },
+      {
+        name: "관리자",
+        path: "/admin",
+        icon: "shield_person",
+        role: "all",
+        subChildren: []
+      },
+      {
+        name: "학교",
+        path: "/school",
+        icon: "school",
+        role: "admin",
+        subChildren: []
+      }
+    ]
+  }
+]
 </script>
 
 <template>
@@ -58,20 +163,6 @@ const router = useRouter()
 </template>
 
 <style scoped>
-*::-webkit-scrollbar {
-  width: 8px;
-}
-
-*::-webkit-scrollbar-thumb {
-  background: lightgrey;
-  border-radius: 8px;
-  background-clip: padding-box;
-}
-
-*::-webkit-scrollbar-track {
-  background: transparent;
-}
-
 .sidebar-header {
   display: flex;
   justify-content: center;

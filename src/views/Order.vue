@@ -1,10 +1,36 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import ordersJson from '@/assets/order.json'
-
-const orders = ref(ordersJson)
 const date = ref()
+const orders = ref([
+  {
+    id: "12345678",
+    phoneNumber: "010-1234-5678",
+    amount: "5,000",
+    orderedDate: "1970-01-01 00:00:00",
+    expiration: "1970-01-06 23:59:59",
+    isExchanged: false,
+    showDetails: false
+  },
+  {
+    id: "12345678",
+    phoneNumber: "010-1234-5678",
+    amount: "5,000",
+    orderedDate: "1970-01-01 00:00:00",
+    expiration: "1970-01-06 23:59:59",
+    isExchanged: false,
+    showDetails: false
+  },
+  {
+    id: "12345678",
+    phoneNumber: "010-1234-5678",
+    amount: "5,000",
+    orderedDate: "1970-01-01 00:00:00",
+    expiration: "1970-01-06 23:59:59",
+    isExchanged: false,
+    showDetails: false
+  }
+])
 
 function showDetails(index: number) {
   orders.value[index].showDetails = !orders.value[index].showDetails
@@ -13,9 +39,9 @@ function showDetails(index: number) {
 
 <template>
   <div class="container">
-    <section class="section">
-      <h1 class="typography">주문 내역</h1>
-      <p class="typography">주문 내역을 날짜 범위, 전화번호를 조건으로 설정하여 조회할 수 있습니다.</p>
+    <main class="main">
+      <h1 class="typography">주문</h1>
+      <p class="typography">모든 주문 내역을 날짜 범위, 전화번호를 조건으로 설정하여 조회할 수 있습니다.</p>
       <div style="flex: 0 0 auto; height: 32px"></div>
       <div class="condition-container">
         <div class="condition">
@@ -63,7 +89,7 @@ function showDetails(index: number) {
           </tbody>
         </table>
       </div>
-    </section>
+    </main>
   </div>
 </template>
 
@@ -111,25 +137,6 @@ function showDetails(index: number) {
   outline: none;
   padding: 0 18px;
   font-size: 18px;
-}
-
-.table-container {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  padding: 24px;
-  background: white;
-  border-radius: 24px;
-  box-shadow: 0px 3px 10px rgba(217, 217, 217, 0.8);
-}
-
-.table {
-  width: 100%;
-  border-spacing: 0;
-  border-collapse: collapse;
-  white-space: nowrap;
-  border-top: 1px solid lightgrey;
-  border-bottom: 1px solid lightgrey;
 }
 
 .detail {

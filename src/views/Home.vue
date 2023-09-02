@@ -20,106 +20,105 @@ function submitForm() {
 }
 
 function showLoginDate() {
-	const toast = useToast()
+  const toast = useToast()
 
-	toast.success(`로그인 시간: ${new Date().toLocaleString()}`, {
-		timeout: 3000
-	})
+  toast.success(`로그인 시간: ${new Date().toLocaleString()}`, {
+    timeout: 3000
+  })
 }
 </script>
 
 <template>
-  <main class="main">
-    <div class="content">
-      <div class="header">
-        <div class="logo-container">
-          <img class="logo" :src="logo" />
-          <div class="logo-typography">
-            <div
-              style="
+  <div>
+    <main class="main">
+      <div class="content">
+        <div class="header">
+          <div class="logo-container">
+            <img class="logo" :src="logo" />
+            <div class="logo-typography">
+              <div style="
                 font-weight: bold;
                 font-size: 3em;
                 line-height: 1;
                 margin-bottom: 5px;
-              "
-            >
-              H4Pay
+              ">
+                H4Pay
+              </div>
+              <div style="font-size: 2em; line-height: 1">매니저</div>
             </div>
-            <div style="font-size: 2em; line-height: 1">매니저</div>
           </div>
-        </div>
-        <div>
-          <h1 class="typography-h5">공지사항</h1>
-          <hr />
-          <div style="height: 20vh"></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="signin-header">
-          <h1 class="typography-h5">로그인</h1>
-        </div>
-        <form @submit.prevent="submitForm">
           <div>
-            <label class="input-label">전화번호</label>
-            <div class="input">
-              <input />
-            </div>
-          </div>
-
-          <div class="m-25">
-            <label class="input-label">비밀번호</label>
-            <div class="input">
-              <input type="password" />
-            </div>
-          </div>
-
-          <div class="button-container">
-            <button
-              class="primary-button"
-              type="button"
-              @click="isModalOpened = true"
-            >
-              회원가입
-            </button>
-            <button class="primary-button" style="margin-left: 10px" type="submit" @click="showLoginDate">로그인</button>
-          </div>
-        </form>
-      </div>
-      <Modal v-if="isModalOpened" @close-modal="isModalOpened = false">
-        <div class="signup">
-          <h1 class="typography-h5">회원가입</h1>
-          <div class="signup-content">
-            <div class="signin-input">
-              <label class="input-label">전화번호</label>
-              <div class="input">
-                <input />
-              </div>
-              <label class="input-label">전화번호</label>
-              <div class="input">
-                <input />
-              </div>
-              <label class="input-label">전화번호</label>
-              <div class="input">
-                <input />
-              </div>
-              <label class="input-label">전화번호</label>
-              <div class="input">
-                <input />
-              </div>
-              <label class="input-label">전화번호</label>
-              <div class="input">
-                <input />
-              </div>
-              <label class="input-label">전화번호</label>
-              <div class="input">
-                <input />
-              </div>
-            </div>
+            <h1 class="typography-h5">공지사항</h1>
+            <hr />
+            <div style="height: 20vh"></div>
           </div>
         </div>
-      </Modal>
-    </div>
-  </main>
+        <div class="card">
+          <div class="signin-header">
+            <h1 class="typography-h5">로그인</h1>
+          </div>
+          <form @submit.prevent="submitForm">
+            <div>
+              <label class="input-label">전화번호</label>
+              <div class="input">
+                <input />
+              </div>
+            </div>
+
+            <div class="m-25">
+              <label class="input-label">비밀번호</label>
+              <div class="input">
+                <input type="password" />
+              </div>
+            </div>
+
+            <div class="button-container">
+              <button class="primary-button" type="button" @click="isModalOpened = true">
+                회원가입
+              </button>
+              <button class="primary-button" style="margin-left: 10px" type="submit" @click="showLoginDate">로그인</button>
+            </div>
+          </form>
+        </div>
+        <Modal v-if="isModalOpened" @close-modal="isModalOpened = false">
+          <div class="signup">
+            <h1 class="typography-h5">회원가입</h1>
+            <div class="signup-content">
+              <div class="signin-input">
+                <label class="input-label">전화번호</label>
+                <div class="input">
+                  <input />
+                </div>
+                <label class="input-label">전화번호</label>
+                <div class="input">
+                  <input />
+                </div>
+                <label class="input-label">전화번호</label>
+                <div class="input">
+                  <input />
+                </div>
+                <label class="input-label">전화번호</label>
+                <div class="input">
+                  <input />
+                </div>
+                <label class="input-label">전화번호</label>
+                <div class="input">
+                  <input />
+                </div>
+                <label class="input-label">전화번호</label>
+                <div class="input">
+                  <input />
+                </div>
+              </div>
+            </div>
+          </div>
+        </Modal>
+      </div>
+      <footer>
+        본 웹사이트는 Google Chrome 및 1920x1080 이상의 해상도에 최적화되어 있습니다.
+      </footer>
+    </main>
+  </div>
 </template>
 
 <style scoped>
@@ -146,7 +145,7 @@ hr {
 
 .logo {
   width: 100px;
-	border-radius: var(--logo-border-radius);
+  border-radius: var(--logo-border-radius);
 }
 
 .logo-typography {
@@ -227,12 +226,5 @@ hr {
   outline: none;
   padding: 0 18px;
   font-size: 18px;
-}
-
-.button-container {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  margin-top: 24px;
 }
 </style>

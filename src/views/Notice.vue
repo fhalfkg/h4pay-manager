@@ -1,9 +1,44 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import noticesJson from '@/assets/notice.json'
-
-const notices = ref(noticesJson)
+const notices = ref([
+  {
+    no: 0,
+    title: "테스트",
+    updatedDate: "1970-01-01 00:00:00",
+    showDetails: false
+  },
+  {
+    no: 1,
+    title: "테스트",
+    updatedDate: "1970-01-01 00:00:00",
+    showDetails: false
+  },
+  {
+    no: 2,
+    title: "테스트",
+    updatedDate: "1970-01-01 00:00:00",
+    showDetails: false
+  },
+  {
+    no: 3,
+    title: "테스트",
+    updatedDate: "1970-01-01 00:00:00",
+    showDetails: false
+  },
+  {
+    no: 4,
+    title: "테스트",
+    updatedDate: "1970-01-01 00:00:00",
+    showDetails: false
+  },
+  {
+    no: 5,
+    title: "테스트",
+    updatedDate: "1970-01-01 00:00:00",
+    showDetails: false
+  }
+])
 
 function showDetails(index: number) {
   notices.value[index].showDetails = !notices.value[index].showDetails
@@ -12,7 +47,7 @@ function showDetails(index: number) {
 
 <template>
   <div class="container">
-    <section class="section">
+    <main class="main">
       <h1 class="typography">공지사항</h1>
       <p class="typography">공지사항을 관리할 수 있습니다.</p>
       <div style="flex: 0 0 auto; height: 32px"></div>
@@ -46,37 +81,11 @@ function showDetails(index: number) {
           <button class="primary-button" style="margin-left: 10px">추가</button>
         </div>
       </div>
-    </section>
+    </main>
   </div>
 </template>
 
 <style scoped>
-.button-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  margin-top: 10px;
-}
-
-.table-container {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  padding: 24px;
-  background: white;
-  border-radius: 24px;
-  box-shadow: 0px 3px 10px rgba(217, 217, 217, 0.8);
-}
-
-.table {
-  width: 100%;
-  border-spacing: 0;
-  border-collapse: collapse;
-  white-space: nowrap;
-  border-top: 1px solid lightgrey;
-  border-bottom: 1px solid lightgrey;
-}
-
 .detail {
   overflow: hidden;
   background-color: rgba(242, 244, 246, 0.5);

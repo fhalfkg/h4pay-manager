@@ -2,14 +2,14 @@
 
 <template>
 	<div class="container">
-		<section class="dashboard">
+		<main class="dashboard">
 			<div class="panel">
 				<div class="title">판매량</div>
 				<div class="typography-box">
 					<div class="typography">50건<span style="font-size: 2rem; color: green">↑</span></div>
 				</div>
 			</div>
-		</section>
+		</main>
 	</div>
 </template>
 

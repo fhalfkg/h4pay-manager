@@ -1,9 +1,19 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import giftsJson from '@/assets/gift.json'
-
-const gifts = ref(giftsJson)
+const gifts = ref([
+  {
+    id: "12345678",
+    sender: "010-1234-5678",
+    recipient: "010-1234-5678",
+    amount: "5,000",
+    orderedDate: "1970-01-01 00:00:00",
+    expiration: "1970-01-06 23:59:59",
+    isExchanged: false,
+    showDetails: false
+  }
+])
+const date = ref()
 
 function showDetails(index: number) {
   gifts.value[index].showDetails = !gifts.value[index].showDetails
@@ -12,7 +22,7 @@ function showDetails(index: number) {
 
 <template>
   <div class="container">
-    <section class="section">
+    <main class="main">
       <h1 class="typography">선물</h1>
       <p class="typography">모든 선물 발송 내역을 조회할 수 있습니다.</p>
       <div style="flex: 0 0 auto; height: 32px"></div>
@@ -70,7 +80,7 @@ function showDetails(index: number) {
           </tbody>
         </table>
       </div>
-    </section>
+    </main>
   </div>
 </template>
 
@@ -120,25 +130,6 @@ function showDetails(index: number) {
   font-size: 18px;
 }
 
-.table-container {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  padding: 24px;
-  background: white;
-  border-radius: 24px;
-  box-shadow: 0px 3px 10px rgba(217, 217, 217, 0.8);
-}
-
-.table {
-  width: 100%;
-  border-spacing: 0;
-  border-collapse: collapse;
-  white-space: nowrap;
-  border-top: 1px solid lightgrey;
-  border-bottom: 1px solid lightgrey;
-}
-
 .detail {
   overflow: hidden;
   background-color: rgba(242, 244, 246, 0.5);
@@ -152,22 +143,5 @@ function showDetails(index: number) {
 
 .expanded {
   transform: rotate(90deg);
-}
-
-th {
-  padding: 8px 12px;
-  font-weight: normal;
-  border-left: none;
-  background: rgb(242, 244, 246);
-}
-
-td {
-  padding: 8px 12px;
-  font-weight: normal;
-  border-left: none;
-}
-
-tr>td {
-  text-align: center;
 }
 </style>
