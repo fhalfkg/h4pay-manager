@@ -25,21 +25,21 @@ function showDetails(index: number) {
     <main class="main">
       <h1 class="typography">선물</h1>
       <p class="typography">모든 선물 발송 내역을 조회할 수 있습니다.</p>
-      <div style="flex: 0 0 auto; height: 32px"></div>
+      <div style="height: 32px"></div>
       <div class="condition-container">
         <div class="condition">
-          <p class="typography label">날짜 범위</p>
+          <label class="typography label">날짜 범위</label>
           <VueDatePicker v-model="date" range auto-apply locale="ko" format="yyyy/MM/dd" :partial-range="false"
             :enable-time-picker="false"></VueDatePicker>
         </div>
         <div class="condition">
-          <p class="typography label">발송자 전화번호</p>
+          <label class="typography label">발송자 전화번호</label>
           <div class="input">
             <input />
           </div>
         </div>
         <div class="condition">
-          <p class="typography label">수신자 전화번호</p>
+          <label class="typography label">수신자 전화번호</label>
           <div class="input">
             <input />
           </div>
@@ -49,36 +49,38 @@ function showDetails(index: number) {
         <button class="primary-button">조회</button>
       </div>
       <div class="table-container">
-        <table class="table">
-          <thead>
-            <tr>
-              <th style="width: 50px"></th>
-              <th>주문번호</th>
-              <th>발송자 전화번호</th>
-              <th>수신자 전화번호</th>
-              <th>금액</th>
-              <th>주문 일시</th>
-              <th>만료 일시</th>
-              <th>교환 여부</th>
-            </tr>
-          </thead>
-          <tbody v-for="(gift, index) in gifts">
-            <tr class="expandable">
-              <td><span class="material-symbols-outlined expand" :class="{ expanded: gifts[index].showDetails }"
-                  @click="showDetails(index)">chevron_right</span></td>
-              <td>{{ gift.id }}</td>
-              <td>{{ gift.sender }}</td>
-              <td>{{ gift.recipient }}</td>
-              <td>{{ gift.amount }}</td>
-              <td>{{ gift.orderedDate }}</td>
-              <td>{{ gift.expiration }}</td>
-              <td>{{ gift.isExchanged ? "O" : "X" }}</td>
-            </tr>
-            <tr v-if="gift.showDetails">
-              <td class="detail" colspan="8">detail</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="scroll-container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th style="width: 50px"></th>
+                <th>주문번호</th>
+                <th>발송자 전화번호</th>
+                <th>수신자 전화번호</th>
+                <th>금액</th>
+                <th>주문 일시</th>
+                <th>만료 일시</th>
+                <th>교환 여부</th>
+              </tr>
+            </thead>
+            <tbody v-for="(gift, index) in gifts">
+              <tr class="expandable">
+                <td><span class="material-symbols-outlined expand" :class="{ expanded: gift.showDetails }"
+                    @click="showDetails(index)">chevron_right</span></td>
+                <td>{{ gift.id }}</td>
+                <td>{{ gift.sender }}</td>
+                <td>{{ gift.recipient }}</td>
+                <td>{{ gift.amount }}</td>
+                <td>{{ gift.orderedDate }}</td>
+                <td>{{ gift.expiration }}</td>
+                <td>{{ gift.isExchanged ? "O" : "X" }}</td>
+              </tr>
+              <tr v-if="gift.showDetails">
+                <td class="detail" colspan="8">detail</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </main>
   </div>
@@ -99,7 +101,8 @@ function showDetails(index: number) {
 }
 
 .label {
-  margin-bottom: 5px;
+  display: inline-block;
+  margin: 0.5rem 0;
 }
 
 .input {

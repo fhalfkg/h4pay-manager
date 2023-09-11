@@ -41,16 +41,16 @@ function showDetails(index: number) {
   <div class="container">
     <main class="main">
       <h1 class="typography">주문</h1>
-      <p class="typography">모든 주문 내역을 날짜 범위, 전화번호를 조건으로 설정하여 조회할 수 있습니다.</p>
-      <div style="flex: 0 0 auto; height: 32px"></div>
+      <label class="typography">모든 주문 내역을 날짜 범위, 전화번호를 조건으로 설정하여 조회할 수 있습니다.</label>
+      <div style="height: 32px"></div>
       <div class="condition-container">
         <div class="condition">
-          <p class="typography label">날짜 범위</p>
+          <label class="typography label">날짜 범위</label>
           <VueDatePicker v-model="date" range auto-apply locale="ko" format="yyyy/MM/dd" :partial-range="false"
             :enable-time-picker="false"></VueDatePicker>
         </div>
         <div class="condition">
-          <p class="typography label">전화번호</p>
+          <label class="typography label">전화번호</label>
           <div class="input">
             <input />
           </div>
@@ -60,34 +60,36 @@ function showDetails(index: number) {
         <button class="primary-button">조회</button>
       </div>
       <div class="table-container">
-        <table class="table">
-          <thead>
-            <tr>
-              <th style="width: 50px"></th>
-              <th>주문번호</th>
-              <th>전화번호</th>
-              <th>금액</th>
-              <th>주문 일시</th>
-              <th>만료 일시</th>
-              <th>교환 여부</th>
-            </tr>
-          </thead>
-          <tbody v-for="(order, index) in orders">
-            <tr class="expandable">
-              <td><span class="material-symbols-outlined expand" :class="{ expanded: orders[index].showDetails }"
-                  @click="showDetails(index)">chevron_right</span></td>
-              <td>{{ order.id }}</td>
-              <td>{{ order.phoneNumber }}</td>
-              <td>{{ order.amount }}</td>
-              <td>{{ order.orderedDate }}</td>
-              <td>{{ order.expiration }}</td>
-              <td>{{ order.isExchanged ? "O" : "X" }}</td>
-            </tr>
-            <tr v-if="order.showDetails">
-              <td class="detail" colspan="7">detail</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="scroll-container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th style="width: 50px"></th>
+                <th>주문번호</th>
+                <th>전화번호</th>
+                <th>금액</th>
+                <th>주문 일시</th>
+                <th>만료 일시</th>
+                <th>교환 여부</th>
+              </tr>
+            </thead>
+            <tbody v-for="(order, index) in orders">
+              <tr class="expandable">
+                <td><span class="material-symbols-outlined expand" :class="{ expanded: order.showDetails }"
+                    @click="showDetails(index)">chevron_right</span></td>
+                <td>{{ order.id }}</td>
+                <td>{{ order.phoneNumber }}</td>
+                <td>{{ order.amount }}</td>
+                <td>{{ order.orderedDate }}</td>
+                <td>{{ order.expiration }}</td>
+                <td>{{ order.isExchanged ? "O" : "X" }}</td>
+              </tr>
+              <tr v-if="order.showDetails">
+                <td class="detail" colspan="7">detail</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </main>
   </div>
@@ -108,7 +110,8 @@ function showDetails(index: number) {
 }
 
 .label {
-  margin-bottom: 5px;
+  display: inline-block;
+  margin: 0.5rem 0;
 }
 
 .input {

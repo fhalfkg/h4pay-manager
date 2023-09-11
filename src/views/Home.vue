@@ -175,7 +175,7 @@ hr {
 
 .card {
   width: 500px;
-  background: white;
+  background-color: white;
   padding: 1rem 1.2rem;
   border-radius: 12px;
   box-shadow: 0px 2px 20px #d9d9d9;
@@ -196,8 +196,7 @@ hr {
 .input-label {
   font-weight: semibold;
   display: inline-block;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem 0;
 }
 
 .input {

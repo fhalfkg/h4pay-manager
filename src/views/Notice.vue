@@ -50,35 +50,37 @@ function showDetails(index: number) {
     <main class="main">
       <h1 class="typography">공지사항</h1>
       <p class="typography">공지사항을 관리할 수 있습니다.</p>
-      <div style="flex: 0 0 auto; height: 32px"></div>
+      <div style="height: 32px"></div>
       <div class="table-container">
-        <table class="table">
-          <thead>
-            <tr>
-              <th style="width: 50px"></th>
-              <th class="checkbox-cell"></th>
-              <th>번호</th>
-              <th>제목</th>
-              <th>작성/수정 일시</th>
-            </tr>
-          </thead>
-          <tbody v-for="(notice, index) in notices">
-            <tr class="expandable">
-              <td><span class="material-symbols-outlined expand" :class="{ expanded: notices[index].showDetails }"
-                  @click="showDetails(index)">chevron_right</span></td>
-              <td class="checkbox-cell"><input type="checkbox"></td>
-              <td>{{ notice.no }}</td>
-              <td>{{ notice.title }}</td>
-              <td>{{ notice.updatedDate }}</td>
-            </tr>
-            <tr v-if="notice.showDetails">
-              <td class="detail" colspan="5">detail</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="button-container">
-          <button class="primary-button">편집</button>
-          <button class="primary-button" style="margin-left: 10px">추가</button>
+        <div class="scroll-container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th style="width: 50px"></th>
+                <th class="checkbox-cell"></th>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성/수정 일시</th>
+              </tr>
+            </thead>
+            <tbody v-for="(notice, index) in notices">
+              <tr class="expandable">
+                <td><span class="material-symbols-outlined expand" :class="{ expanded: notice.showDetails }"
+                    @click="showDetails(index)">chevron_right</span></td>
+                <td class="checkbox-cell"><input type="checkbox"></td>
+                <td>{{ notice.no }}</td>
+                <td>{{ notice.title }}</td>
+                <td>{{ notice.updatedDate }}</td>
+              </tr>
+              <tr v-if="notice.showDetails">
+                <td class="detail" colspan="5">detail</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="button-container">
+            <button class="primary-button">편집</button>
+            <button class="primary-button" style="margin-left: 10px">추가</button>
+          </div>
         </div>
       </div>
     </main>

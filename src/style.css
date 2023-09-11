@@ -59,11 +59,14 @@ body {
   background-color: transparent;
 }
 
+*::-webkit-scrollbar-corner {
+  display: none;
+}
+
 .container {
   background-color: white;
   padding-left: 260px;
   width: 100%;
-  height: 100vh;
   margin: auto;
 }
 
@@ -89,6 +92,13 @@ body {
   background-color: white;
   border-radius: 24px;
   box-shadow: 0px 3px 10px rgba(217, 217, 217, 0.8);
+}
+
+.scroll-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  overflow-y: auto;
 }
 
 .table {
@@ -137,6 +147,11 @@ button {
   font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 }
 
+select {
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  font-size: 18px;
+}
+
 .typography {
   margin: 0;
   padding: 0;
@@ -156,7 +171,7 @@ button {
 }
 
 .primary-button:hover {
-  background-color: #4f4399;
+  background-color: rgb(79, 67, 153);
   cursor: pointer;
 }
 
@@ -174,7 +189,7 @@ button {
 }
 
 .submit-button:hover {
-  background-color: rgb(7, 151, 14);
+  background-color: rgb(8, 151, 17);
   cursor: pointer;
 }
 
@@ -194,7 +209,7 @@ button {
 }
 
 .primary-button-big:hover {
-  background-color: #4f4399;
+  background-color: rgb(79, 67, 153);
   cursor: pointer;
 }
 
@@ -206,11 +221,11 @@ button {
   border: none;
   border-radius: 8px;
   color: white;
-  background-color: #ff4444;
+  background-color: rgb(224, 54, 54);
   transition: background-color .2s ease;
   cursor: pointer;
 }
 
 .signout-button:hover {
-  background-color: #cc0000;
+  background-color: rgb(190, 54, 54);
 }

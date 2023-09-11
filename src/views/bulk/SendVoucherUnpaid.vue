@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Ref, ref } from 'vue'
 
-import UploadBox from '../../components/UploadBox.vue';
+import SpreadsheetMethod from '@/components/SpreadsheetMethod.vue'
 
 enum Method {
   Nothing,
@@ -18,7 +18,7 @@ const file: Ref<File | undefined> = ref(undefined)
     <main class="main">
       <h1 class="typography">대량 전송 (무결제)</h1>
       <p class="typography">대금이 결제되지 않는 금액권 대량 전송 요청을 생성합니다.</p>
-      <div style="flex: 0 0 auto; height: 32px"></div>
+      <div style="height: 32px"></div>
       <div class="condition-container">
         <div class="condition">
           <button class="primary-button-big" @click="selectedMethod = Method.Spreadsheet"><span
@@ -34,18 +34,7 @@ const file: Ref<File | undefined> = ref(undefined)
       <div class="method-container"
         :style="{ display: selectedMethod == Method.Nothing ? 'flex' : undefined, justifyContent: selectedMethod == Method.Nothing ? 'center' : undefined }">
         <span v-if="selectedMethod == Method.Nothing">수신자 명단 입력 방법을 선택해주세요!</span>
-        <div class="spreadsheet" v-if="selectedMethod == Method.Spreadsheet">
-          <p class="typography">1. 아래 버튼을 눌러 양식 파일을 다운로드합니다. (양식을 변경하면 정상적으로 처리되지 않을 수 있습니다.)</p>
-          <button class="primary-button" style="width: 111px; margin: 10px 0px"><span
-              style="color: white; line-height: 1; margin-right: 5px"
-              class="material-symbols-outlined">download</span>다운로드</button>
-          <p class="typography">2. 작성한 양식 파일을 업로드합니다.</p>
-          <UploadBox v-model="file"></UploadBox>
-          <button class="submit-button" style="width: 114px; margin: 10px 0px"><span
-              style="color: white; line-height: 1; margin-right: 5px"
-              class="material-symbols-outlined">forward_to_inbox</span>요청
-            생성</button>
-        </div>
+        <SpreadsheetMethod v-model="file" v-if="selectedMethod == Method.Spreadsheet"></SpreadsheetMethod>
         <div v-if="selectedMethod == Method.Manual">
           직접 입력
         </div>
