@@ -1,13 +1,17 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { ref } from 'vue'
+import { Ref, ref } from 'vue'
 import { useToast } from 'vue-toastification'
 
 import logo from '@/assets/h4pay_logo.png'
 import Modal from '@/components/Modal.vue'
+import { postData } from '@/api'
+import { AxiosError } from 'axios'
 
 const router = useRouter()
 const isModalOpened = ref(false)
+const phoneNumber: Ref<string> = ref("")
+const password: Ref<string> = ref("")
 
 const isChrome = window.navigator.userAgent.toLowerCase().indexOf('chrome')
 
@@ -15,11 +19,27 @@ if (isChrome == -1) {
   alert('본 웹사이트는 Google Chrome에 최적화되어 있습니다.')
 }
 
-function submitForm() {
-  router.push('/dashboard')
+async function submitForm() {
+  const signIn: SignIn = {
+    phoneNumber: phoneNumber.value,
+    password: password.value
+  }
+
+  await postData<TokenInfo>('/login', signIn).then(res => {
+    router.push('/dashboard')
+    showSignedInDate()
+  }).catch((e: AxiosError) => {
+    if (e.response?.status == 400) {
+      alert('전화번호 또는 비밀번호가 바르지 않습니다.')
+    } else if (e.response?.status == 500) {
+      alert('서버 내부 오류가 발생했습니다.')
+    } else {
+      alert('알 수 없는 오류가 발생했습니다.')
+    }
+  })
 }
 
-function showLoginDate() {
+function showSignedInDate() {
   const toast = useToast()
 
   toast.success(`로그인 시간: ${new Date().toLocaleString()}`, {
@@ -61,14 +81,14 @@ function showLoginDate() {
             <div>
               <label class="input-label">전화번호</label>
               <div class="input">
-                <input />
+                <input v-model="phoneNumber" />
               </div>
             </div>
 
             <div class="m-25">
               <label class="input-label">비밀번호</label>
               <div class="input">
-                <input type="password" />
+                <input type="password" v-model="password" />
               </div>
             </div>
 
@@ -76,7 +96,7 @@ function showLoginDate() {
               <button class="primary-button" type="button" @click="isModalOpened = true">
                 회원가입
               </button>
-              <button class="primary-button" style="margin-left: 10px" type="submit" @click="showLoginDate">로그인</button>
+              <button class="primary-button" style="margin-left: 10px" type="submit">로그인</button>
             </div>
           </form>
         </div>

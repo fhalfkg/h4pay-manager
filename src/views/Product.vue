@@ -1,19 +1,20 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { Ref, ref } from 'vue'
 
-const products = ref([
-  {
-    no: 0,
-    name: '테스트 상품',
-    price: 2500,
-    description: '풀무원',
-    isSoldOut: false,
-    showDetails: false
-  }
-])
+import { getData, postData } from '@/api'
+
+const schoolNeisCode = 'M100002171'
+let products: Ref<Product[] | null> = ref(null)
+let showDetailsList: Ref<boolean[]> = ref([])
+
+getData<Product[]>(`/product/list/${schoolNeisCode}`).then(res => {
+  products.value = res.data
+  showDetailsList.value.fill(false)
+  console.log(`Retrieved ${products.value.length} datas`)
+})
 
 function showDetails(index: number) {
-  products.value[index].showDetails = !products.value[index].showDetails
+  showDetailsList.value[index] = !showDetailsList.value[index]
 }
 </script>
 
@@ -39,7 +40,7 @@ function showDetails(index: number) {
             </thead>
             <tbody v-for="(product, index) in products">
               <tr class="expandable">
-                <td><span class="material-symbols-outlined expand" :class="{ expanded: product.showDetails }"
+                <td><span class="material-symbols-outlined expand" :class="{ expanded: showDetailsList[index] }"
                     @click="showDetails(index)">chevron_right</span></td>
                 <td class="checkbox-cell"><input type="checkbox"></td>
                 <td>{{ product.no }}</td>
@@ -48,7 +49,7 @@ function showDetails(index: number) {
                 <td>{{ product.description }}</td>
                 <td>{{ product.isSoldOut ? "O" : "X" }}</td>
               </tr>
-              <tr v-if="product.showDetails">
+              <tr v-if="showDetailsList[index]">
                 <td class="detail" colspan="7">detail</td>
               </tr>
             </tbody>
