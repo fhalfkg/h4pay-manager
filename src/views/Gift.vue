@@ -64,7 +64,7 @@ function showDetails(index: number) {
               </tr>
             </thead>
             <tbody v-for="(gift, index) in gifts">
-              <tr class="expandable">
+              <tr>
                 <td><span class="material-symbols-outlined expand" :class="{ expanded: gift.showDetails }"
                     @click="showDetails(index)">chevron_right</span></td>
                 <td>{{ gift.id }}</td>

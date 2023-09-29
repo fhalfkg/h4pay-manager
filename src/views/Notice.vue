@@ -64,7 +64,7 @@ function showDetails(index: number) {
               </tr>
             </thead>
             <tbody v-for="(notice, index) in notices">
-              <tr class="expandable">
+              <tr>
                 <td><span class="material-symbols-outlined expand" :class="{ expanded: notice.showDetails }"
                     @click="showDetails(index)">chevron_right</span></td>
                 <td class="checkbox-cell"><input type="checkbox"></td>

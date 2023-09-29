@@ -2,11 +2,12 @@
 import { useRouter } from 'vue-router'
 import { Ref, ref } from 'vue'
 import { useToast } from 'vue-toastification'
+import { AxiosError } from 'axios'
 
 import logo from '@/assets/h4pay_logo.png'
 import Modal from '@/components/Modal.vue'
 import { postData } from '@/api'
-import { AxiosError } from 'axios'
+import PhoneNumberConverter from '@/util/PhoneNumberConverter'
 
 const router = useRouter()
 const isModalOpened = ref(false)
@@ -21,11 +22,11 @@ if (isChrome == -1) {
 
 async function submitForm() {
   const signIn: SignIn = {
-    phoneNumber: phoneNumber.value,
+    phoneNumber: PhoneNumberConverter.removeNonNumerics(phoneNumber.value),
     password: password.value
   }
 
-  await postData<TokenInfo>('/login', signIn).then(res => {
+  await postData<TokenInfo>('/login', signIn).then(_ => {
     router.push('/dashboard')
     showSignedInDate()
   }).catch((e: AxiosError) => {
@@ -81,7 +82,7 @@ function showSignedInDate() {
             <div>
               <label class="input-label">전화번호</label>
               <div class="input">
-                <input v-model="phoneNumber" />
+                <input v-model="phoneNumber" @input="() => { phoneNumber = PhoneNumberConverter.addDashes(phoneNumber) }" />
               </div>
             </div>
 

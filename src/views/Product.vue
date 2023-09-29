@@ -4,8 +4,8 @@ import { Ref, ref } from 'vue'
 import { getData, postData } from '@/api'
 
 const schoolNeisCode = 'M100002171'
-let products: Ref<Product[] | null> = ref(null)
-let showDetailsList: Ref<boolean[]> = ref([])
+const products: Ref<Product[] | null> = ref(null)
+const showDetailsList: Ref<boolean[]> = ref([])
 
 getData<Product[]>(`/product/list/${schoolNeisCode}`).then(res => {
   products.value = res.data
@@ -39,7 +39,7 @@ function showDetails(index: number) {
               </tr>
             </thead>
             <tbody v-for="(product, index) in products">
-              <tr class="expandable">
+              <tr>
                 <td><span class="material-symbols-outlined expand" :class="{ expanded: showDetailsList[index] }"
                     @click="showDetails(index)">chevron_right</span></td>
                 <td class="checkbox-cell"><input type="checkbox"></td>
