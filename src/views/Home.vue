@@ -69,7 +69,7 @@ function showSignedInDate() {
             </div>
           </div>
           <div>
-            <h1 class="typography-h5">공지사항</h1>
+            <h1 class="typography-h5" style="margin-top: 1em;">공지사항</h1>
             <hr />
             <div style="height: 20vh"></div>
           </div>
@@ -208,10 +208,6 @@ hr {
   flex-direction: column;
   width: 500px;
   margin-right: 50px;
-}
-
-.typography-h5 {
-  font-size: 25px;
 }
 
 .input-label {
