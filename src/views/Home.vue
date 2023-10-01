@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { Ref, ref } from 'vue'
-import { useToast } from 'vue-toastification'
 import { AxiosError } from 'axios'
 
+import { useStore } from '@/store'
 import logo from '@/assets/h4pay_logo.png'
 import Modal from '@/components/Modal.vue'
 import { postData } from '@/api'
 import PhoneNumberConverter from '@/util/PhoneNumberConverter'
 
 const router = useRouter()
+const store = useStore()
 const isModalOpened = ref(false)
 const phoneNumber: Ref<string> = ref("")
 const password: Ref<string> = ref("")
@@ -26,9 +27,9 @@ async function submitForm() {
     password: password.value
   }
 
-  await postData<TokenInfo>('/login', signIn).then(_ => {
+  await postData<TokenInfo>('/login', signIn).then(res => {
+    store.setAccessToken(res.data.accessToken)
     router.push('/dashboard')
-    showSignedInDate()
   }).catch((e: AxiosError) => {
     if (e.response?.status == 400) {
       alert('전화번호 또는 비밀번호가 바르지 않습니다.')
@@ -37,14 +38,6 @@ async function submitForm() {
     } else {
       alert('알 수 없는 오류가 발생했습니다.')
     }
-  })
-}
-
-function showSignedInDate() {
-  const toast = useToast()
-
-  toast.success(`로그인 시간: ${new Date().toLocaleString()}`, {
-    timeout: 3000
   })
 }
 </script>

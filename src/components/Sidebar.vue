@@ -4,8 +4,10 @@ import { useRouter } from 'vue-router'
 import logo from '@/assets/h4pay_logo.png'
 
 import ListCategory from './ListCategory.vue'
+import { useStore } from '@/store';
 
 const router = useRouter()
+const store = useStore()
 const menu = [
   {
     name: "메인",
@@ -112,6 +114,11 @@ const menu = [
     ]
   }
 ]
+
+function signOut() {
+  store.clearAccessToken()
+  router.replace('/')
+}
 </script>
 
 <template>
@@ -130,7 +137,7 @@ const menu = [
         <div style="font-size: 1em; line-height: 1">매니저</div>
       </div>
     </div>
-    <button class="signout-button" @click="router.replace('/')">
+    <button class="signout-button" @click="signOut">
       <span class="material-symbols-outlined" style="color: white">logout</span>
       <span style="line-height: 1">로그아웃</span>
     </button>

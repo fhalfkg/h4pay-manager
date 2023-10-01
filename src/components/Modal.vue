@@ -40,8 +40,8 @@
 }
 
 .body {
-  overflow: scroll;
   overflow-x: hidden;
+  overflow-y: overlay;
   flex: 1 1 auto;
   padding: 1rem;
 }
